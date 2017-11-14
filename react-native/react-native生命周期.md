@@ -107,3 +107,6 @@ componentWillUnmount	1	N
 
 3.对子组件：props是一个父组件传递给子组件的数据流，这个数据流可以一直传递到子孙组件；state代表的是一个组件内部自身的状态，只能在自身组件中存在。
 
+![](http://upload-images.jianshu.io/upload_images/2300716-0695c771b4dbf757.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
