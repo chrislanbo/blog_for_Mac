@@ -244,3 +244,202 @@ myTest(); // 2
 然后，每当函数被调用时，这个变量所存储的信息都是函数最后一次被调用时所包含的信息。
 
 > 注释：该变量仍然是函数的局部变量。
+
+
+
+## PHP echo 和 print 输出语句
+
+echo 和 print 之间的差异：
+
+- echo - 能够输出一个以上的字符串
+- print - 只能输出一个字符串，并始终返回 1
+
+提示：echo 比 print 稍快，因为它不返回任何值。
+
+##PHP 数据类型
+
+**字符串、整数、浮点数、逻辑、数组、对象、NULL。**
+
+string、int 、float、bool、array、NULL
+
+
+
+**字符串**可以是引号内的任何文本。您可以使用单引号或双引号
+
+整数是没有小数的数字
+
+整数规则：
+
+- 整数必须有至少一个数字（0-9）
+- 整数不能包含逗号或空格
+- 整数不能有小数点
+- 整数正负均可
+- 可以用三种格式规定整数：十进制、十六进制（前缀是 0x）或八进制（前缀是 0）
+
+在下面的例子中，我们将测试不同的数字。PHP var_dump() 会返回变量的数据类型和十进制的值
+
+```
+<?php 
+$x = 5985;
+var_dump($x);
+echo "<br>"; 
+$x = -345; // 负数
+var_dump($x);
+echo "<br>"; 
+$x = 0x8C; // 十六进制数
+var_dump($x);
+echo "<br>";
+$x = 047; // 八进制数
+var_dump($x);
+?>
+```
+
+**PHP 浮点数**
+
+浮点数是有小数点或指数形式的数字。
+
+在下面的例子中，我们将测试不同的数字。PHP var_dump() 会返回变量的数据类型和值：
+
+```
+<?php 
+$x = 10.365;
+var_dump($x);
+echo "<br>"; 
+$x = 2.4e3;
+var_dump($x);
+echo "<br>"; 
+$x = 8E-5;
+var_dump($x);
+?>
+```
+
+**PHP 逻辑**
+
+逻辑是 true 或 false。
+
+```
+$x=true;
+$y=false;
+
+```
+
+逻辑常用于条件测试。您将在本教程稍后的章节学到更多有关条件测试的知识。
+
+**PHP 数组**
+
+数组在一个变量中存储多个值。
+
+在下面的例子中，我们将测试不同的数组。PHP var_dump() 会返回变量的数据类型和值：
+
+```php
+<?php 
+$cars=array("Volvo","BMW","SAAB");
+var_dump($cars); // array(3) { [0]=> string(5) "Volvo" [1]=> string(3) "BMW" [2]=> string(4) "SAAB" }
+?>
+```
+
+**PHP 对象**
+
+对象是存储数据和有关如何处理数据的信息的数据类型。
+
+在 PHP 中，必须明确地声明对象。
+
+首先我们必须声明对象的类。对此，我们使用 class 关键词。类是包含属性和方法的结构。
+
+然后我们在对象类中定义数据类型，然后在该类的实例中使用此数据类型：
+
+```php
+<?php
+class Car
+{
+  var $color;
+  function Car($color="green") {
+    $this->color = $color;
+  }
+  function what_color() {
+    return $this->color;
+  }
+}
+function print_vars($obj) {
+   foreach (get_object_vars($obj) as $prop => $val) {
+     echo "\t$prop = $val\n";
+   }
+}
+
+// instantiate one object
+$herbie = new Car("white");
+echo "herbie: Properties\n";
+print_vars($herbie); //herbie: Properties color = white
+?>
+```
+
+**PHP NULL 值**
+
+ NULL 值表示变量无值。NULL 是数据类型 NULL 唯一可能的值。
+
+NULL 值标示变量是否为空。也用于区分空字符串与空值数据库。
+
+可以通过把值设置为 NULL，将变量清空：
+
+```PHP
+<?php
+$x="Hello world!";
+$x=null;
+var_dump($x);
+?>
+
+```
+
+##PHP 字符串函数
+
+> 转义字符需要用双引号
+
+int strlen() 函数返回字符串和数字的长度，输入有效数字也会返回长度，
+
+```php
+<?php
+echo strlen("Hello world!");
+echo "\n";
+echo strlen(036);
+echo "\n";
+echo strlen(0000036);
+echo "\n";
+echo strlen(1036);
+echo "\n";
+echo strlen(1.036);
+echo "\n";
+echo strlen(000.1036);
+echo "\ncccc:";
+echo strlen(cccc);
+echo "\n";
+echo strlen();
+?>
+```
+
+```php
+12
+2
+2
+4
+5
+6
+cccc:4
+PHP Notice:  Use of undefined constant cccc - assumed 'cccc' in ..... on line 14
+PHP Warning:  strlen() expects exactly 1 parameter, 0 given in ..... on line 16
+```
+
+## PHP strpos() 函数
+
+strpos() 函数用于检索字符串内指定的字符或文本。
+
+如果找到匹配，则会返回首个匹配的字符位置。如果未找到匹配，则将返回 FALSE。
+
+下例检索字符串 "Hello world!" 中的文本 "world"：
+
+### 实例
+
+```
+<?php
+echo strpos("Hello world!","world"); // 有就返回下标，没有则不返回
+?>
+```
